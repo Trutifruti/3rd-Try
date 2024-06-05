@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://oxy3le61vgjb"]
+
+[ext_resource type="Script" path="res://mage/StateMachine.gd" id="1_4hxny"]
+[ext_resource type="Script" path="res://mage/Falling.gd" id="1_hrh2w"]
+[ext_resource type="Script" path="res://mage/mage.gd" id="1_j8ykl"]
+[ext_resource type="Script" path="res://mage/Jumping.gd" id="2_f0wqj"]
+[ext_resource type="Script" path="res://mage/Idle.gd" id="3_e2wgi"]
+[ext_resource type="Script" path="res://mage/Running.gd" id="6_vj0bx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y6c86"]
+
+[node name="Mage" type="CharacterBody2D"]
+script = ExtResource("1_j8ykl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y6c86")
+
+[node name="Coyote" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="LandingJump" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("subject", "initial_state")]
+script = ExtResource("1_4hxny")
+subject = NodePath("..")
+initial_state = NodePath("Idle")
+
+[node name="Falling" type="Node" parent="StateMachine" node_paths=PackedStringArray("coyote", "landingjump", "subject")]
+script = ExtResource("1_hrh2w")
+coyote = NodePath("../../Coyote")
+landingjump = NodePath("../../LandingJump")
+subject = NodePath("../..")
+
+[node name="Jumping" type="Node" parent="StateMachine" node_paths=PackedStringArray("landingjump", "subject")]
+script = ExtResource("2_f0wqj")
+landingjump = NodePath("../../LandingJump")
+subject = NodePath("../..")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("landingjump", "subject")]
+script = ExtResource("3_e2wgi")
+landingjump = NodePath("../../LandingJump")
+subject = NodePath("../..")
+
+[node name="Running" type="Node" parent="StateMachine" node_paths=PackedStringArray("subject")]
+script = ExtResource("6_vj0bx")
+subject = NodePath("../..")

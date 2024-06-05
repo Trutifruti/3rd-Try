@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://x7c5bs0c0rh6"]
+
+[ext_resource type="PackedScene" uid="uid://oxy3le61vgjb" path="res://mage/mage.tscn" id="1_6v4ey"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1tt3n"]
+distance = -132.0
+
+[node name="Level" type="Node2D"]
+
+[node name="Mage" parent="." instance=ExtResource("1_6v4ey")]
+position = Vector2(455, 300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(476, 184)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_1tt3n")

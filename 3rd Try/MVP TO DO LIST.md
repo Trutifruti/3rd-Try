@@ -1,0 +1,12 @@
+- [ ] Character movement
+	- [ ] Jump
+	- [ ] Walk
+	- [ ] Stop
+	- [x] Idle
+	- [ ] Fall
+- [ ] Push Force mechanic
+	- See how to do a composition based push force mechanic
+	- probably just an area 2D that applies the a force from the centre to the character
+- [ ] Bullet Time
+- [ ] Design and implement 5 spells 
+- [ ] Design a test level to try out the spells on

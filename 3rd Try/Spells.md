@@ -1,0 +1,28 @@
+
+- [ ] develop a throwing system
+- [ ] develop a mouse selecting system, or figure it out at least
+- [ ] develop a spawning system 
+	- [ ] place an element in an Area 2D to spawn it
+- Trampoline Blob
+	- projectile spell 
+	- It becomes a trampoline off of which you can jump
+	- [ ] Create a surface element that is bouncy
+		- The bounce needs to
+		- [ ] estimate what direction it should give velocity
+		- [ ] Define the speed it should give
+		- [ ] Give boost on timed jump input
+- Absorbing Orb
+	- Evoking spell
+	- Creates an Area2D
+	- [ ] area 2D that adds velocity towards it's coordinates
+- Accelerating Orb
+	- Evoking spell
+	- Creates an Area2D
+	- [ ] Increases velocity of objects in the area
+- Swap Teleportation
+	- evoking spell
+	- Select an item with which you will swap places
+	- Maybe extend it to selecting which ever 2 objects
+- Remote controlled bomb
+	- projectile spell
+	- sets up a remote controlled explosive that provides a powerful push
