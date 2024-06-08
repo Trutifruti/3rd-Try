@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://x7c5bs0c0rh6"]
+[gd_scene load_steps=5 format=3 uid="uid://x7c5bs0c0rh6"]
 
 [ext_resource type="PackedScene" uid="uid://oxy3le61vgjb" path="res://mage/mage.tscn" id="1_6v4ey"]
+[ext_resource type="PackedScene" uid="uid://dyi8j70hpacb5" path="res://accelerating_orbe.tscn" id="2_hdm32"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1tt3n"]
 distance = -132.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5k75"]
+size = Vector2(382, 20)
 
 [node name="Level" type="Node2D"]
 
@@ -15,3 +19,21 @@ position = Vector2(476, 184)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_1tt3n")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(195, 281)
+shape = SubResource("RectangleShape2D_h5k75")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(597, 217)
+shape = SubResource("RectangleShape2D_h5k75")
+
+[node name="Accelerating Orbe" parent="." instance=ExtResource("2_hdm32")]
+position = Vector2(380, 175)
+acceleration_value = 1.0
+
+[connection signal="acceleration" from="Accelerating Orbe" to="Mage" method="_on_accelerating_orbe_acceleration"]

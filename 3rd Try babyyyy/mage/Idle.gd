@@ -1,21 +1,12 @@
-extends State
+extends Ground_State
 class_name Idle
 
-@export var landingjump: Timer
-
-func enter():
-	if not landingjump.is_stopped():
-		transitioned.emit('jumping')
-	pass
 	
 func exit():
 	pass
 
 func update(_delta: float):
-	if not landingjump.is_stopped():
-		transitioned.emit('jump') 
-	if Input.is_action_just_pressed('up'):
-		transitioned.emit(self, 'jumping')
+	super.update(_delta)
 	if subject.input_x_direction != 0:
 		transitioned.emit(self, 'running')
 	if not subject.is_on_floor():
@@ -23,4 +14,4 @@ func update(_delta: float):
 
 func physics_update(_delta: float):
 	if subject.velocity.x != 0:
-		subject.velocity.x = lerp(subject.velocity.x, 0, 0.5)
+		subject.velocity.x = lerp(subject.velocity.x, 0.0, 0.5)

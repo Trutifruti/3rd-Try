@@ -1,18 +1,13 @@
-extends State
+extends Ground_State
 class_name Running
-
-func enter():
-	pass
 	
 func exit():
 	pass
 
 func update(_delta: float):
-	if Input.is_action_just_pressed('up'):
-		transitioned.emit('jumping')
+	super.update(_delta)
 	if subject.input_x_direction == 0:
-		print('hehe')
-		transitioned.emit('idle')
+		transitioned.emit(self, 'idle')
 		
 func physics_update(_delta: float):
 	subject.velocity.x = lerp(
